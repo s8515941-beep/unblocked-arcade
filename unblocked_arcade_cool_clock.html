@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b18">
+<title>UNBLOCKED ARCADE</title>
+<style>
+:root{--bg:#080b18;--panel:#111a31;--line:#28385f;--muted:#aebbd9;--cyan:#58efff;--pink:#ff6acb;--violet:#9c83ff;--lime:#c6ff72}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#f7f8ff;background:radial-gradient(ellipse at 12% 0%,#1a3565 0,transparent 38%),radial-gradient(ellipse at 92% 15%,#48205c 0,transparent 34%),var(--bg);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+header{position:relative;overflow:hidden;text-align:center;padding:42px 16px 35px;border-bottom:1px solid #34436c;background:linear-gradient(115deg,rgba(12,31,67,.92),rgba(49,21,67,.9))}
+header:before,header:after{content:"";position:absolute;width:260px;height:260px;border:1px solid rgba(88,239,255,.2);border-radius:50%;pointer-events:none}
+header:before{left:-140px;top:-150px}header:after{right:-125px;bottom:-175px}
+.hero{position:relative;z-index:1}
+.eyebrow{color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:.28em;text-transform:uppercase}
+h1{margin:9px 0 4px;font-size:clamp(34px,7vw,66px);line-height:1.02;letter-spacing:.045em;text-shadow:0 0 25px rgba(88,239,255,.3)}
+.tagline{margin:11px 0 0;color:#d8e0fa;font-size:16px}
+.clock-panel{display:flex;align-items:center;justify-content:center;gap:17px;width:max-content;max-width:100%;margin:25px auto 0;padding:15px 23px;border:1px solid rgba(88,239,255,.48);border-radius:20px;background:linear-gradient(135deg,rgba(5,14,34,.92),rgba(24,19,52,.9));box-shadow:0 0 35px rgba(88,239,255,.12),inset 0 0 22px rgba(88,239,255,.04)}
+.clock-face{display:grid;place-items:center;width:52px;height:52px;border-radius:16px;background:linear-gradient(145deg,#0b8cac,#6847b7);font-size:27px;box-shadow:0 0 20px rgba(88,239,255,.22)}
+.clock-copy{text-align:left}
+.clock-label{color:var(--cyan);font-size:10px;font-weight:900;letter-spacing:.2em;text-transform:uppercase}
+#local-time{display:block;margin:1px 0;color:#fff;font-size:clamp(30px,6vw,42px);font-weight:850;line-height:1.1;letter-spacing:.035em;font-variant-numeric:tabular-nums}
+.clock-meta{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#c2cce7;font-size:12px}
+.zone-pill{padding:3px 8px;border:1px solid rgba(88,239,255,.35);border-radius:99px;color:#9cf5ff;background:rgba(88,239,255,.08);font-weight:800}
+main{width:min(1160px,100%);margin:0 auto;padding:30px 18px 42px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.section-head h2{margin:0;font-size:25px}.section-head p{margin:4px 0 0;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:18px}
+.card{position:relative;display:flex;flex-direction:column;min-width:0;overflow:hidden;padding:15px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(150deg,rgba(24,36,68,.98),rgba(12,19,39,.99));box-shadow:0 13px 32px rgba(0,0,0,.22);transition:transform .18s,border-color .18s,box-shadow .18s}
+.card:hover{transform:translateY(-5px);border-color:var(--cyan);box-shadow:0 17px 36px rgba(36,206,255,.14)}
+.logo{position:relative;display:flex;align-items:center;justify-content:center;min-height:118px;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:15px;text-align:center;isolation:isolate}
+.logo:before{content:"";position:absolute;inset:-40%;z-index:-1;background:repeating-linear-gradient(125deg,transparent 0 17px,rgba(255,255,255,.055) 18px 20px);transform:rotate(-8deg)}
+.logo span{display:block;padding:10px;font-weight:1000;line-height:.95;text-transform:uppercase;text-shadow:0 3px 0 rgba(0,0,0,.35),0 0 18px rgba(255,255,255,.18)}
+.logo.granny{background:radial-gradient(circle at 50% 20%,#774d42,#26151e 68%,#100d18)}.logo.granny span{font-family:Georgia,serif;font-size:35px;letter-spacing:.06em;color:#f5e7d4;text-shadow:2px 3px #7b171b,0 0 16px #ff4b4b}
+.logo.granny3{background:radial-gradient(circle at 50% 25%,#6b536f,#21172e 70%,#100d18)}.logo.granny3 span{font-family:Georgia,serif;font-size:34px;color:#f7e6d5;text-shadow:2px 3px #5c183e,0 0 16px #e78aff}
+.logo.collection{background:linear-gradient(135deg,#183e5a,#211c51 55%,#451b4d)}.logo.collection span{font-size:26px;letter-spacing:.08em;color:#bffaff}
+.logo.roblox{background:linear-gradient(135deg,#a92737,#5a1026 60%,#160f25)}.logo.roblox span{font-size:37px;letter-spacing:.13em;color:white;transform:skew(-8deg)}
+.logo.geometry{background:linear-gradient(135deg,#073c62,#14236a 55%,#451b7b)}.logo.geometry span{font-size:29px;letter-spacing:.035em;color:#7df4ff;text-shadow:0 0 9px #00d9ff,3px 3px #17214b}
+.logo.basketball{background:linear-gradient(135deg,#9a3d12,#4f1b35 58%,#1b1434)}.logo.basketball span{font-size:25px;letter-spacing:.04em;color:#ffe0a2}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:12px}
+.status{padding:5px 9px;border:1px solid rgba(88,239,255,.25);border-radius:999px;color:#9cf5ff;background:rgba(88,239,255,.07);font-size:10px;font-weight:900;letter-spacing:.09em;text-transform:uppercase}
+h3{margin:10px 0 5px;font-size:19px}.card p{flex:1;margin:0 0 17px;color:var(--muted);font-size:13px}
+.actions{display:grid;grid-template-columns:1fr;gap:8px}
+.actions a{display:block;padding:11px 12px;border:1px solid rgba(88,239,255,.48);border-radius:11px;background:linear-gradient(100deg,#087eaa,#5944a9);color:#fff;font-weight:850;text-align:center;text-decoration:none;letter-spacing:.035em}
+.actions a:hover,.actions a:focus{filter:brightness(1.18);outline:2px solid #c5faff;outline-offset:2px}
+.actions a.secondary{background:rgba(255,255,255,.045);border-color:#56658b;color:#e1e8ff}
+.info{margin-top:23px;padding:15px 17px;border:1px solid #39466e;border-radius:15px;background:rgba(18,26,50,.8);color:#bac7e5;font-size:13px}.info strong{color:#f1f5ff}
+footer{text-align:center;padding:18px;color:#8492b8;font-size:11px;letter-spacing:.12em}
+@media(max-width:520px){header{padding:31px 12px 27px}.clock-panel{padding:13px 15px;gap:12px}main{padding:23px 13px 32px}.card{padding:13px}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}.card:hover{transform:none}}
+</style>
+
+<style>
+/* ARCADE UPGRADE */
+body{
+ background:
+   radial-gradient(circle at 15% 18%,rgba(0,238,255,.16),transparent 26rem),
+   radial-gradient(circle at 85% 30%,rgba(255,45,190,.15),transparent 28rem),
+   radial-gradient(circle at 50% 100%,rgba(130,75,255,.16),transparent 30rem),
+   #050711;
+ background-attachment:fixed;
+}
+body:before{
+ content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.22;
+ background-image:linear-gradient(rgba(100,220,255,.08) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(100,220,255,.08) 1px,transparent 1px);
+ background-size:42px 42px;
+ mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+header{
+ background:linear-gradient(120deg,rgba(5,20,48,.96),rgba(46,12,63,.94),rgba(5,33,52,.94));
+ box-shadow:0 12px 55px rgba(0,220,255,.12);
+}
+h1{
+ background:linear-gradient(90deg,#fff 5%,#68f5ff 35%,#ff7bd8 68%,#c3ff76 95%);
+ -webkit-background-clip:text;background-clip:text;color:transparent;
+ filter:drop-shadow(0 0 18px rgba(76,225,255,.25));
+}
+.tagline{font-weight:750;letter-spacing:.06em}
+.clock-panel{backdrop-filter:blur(12px);box-shadow:0 0 28px rgba(88,239,255,.18),0 0 70px rgba(255,106,203,.08),inset 0 0 22px rgba(88,239,255,.06)}
+.section-head h2{letter-spacing:.04em;text-shadow:0 0 16px rgba(88,239,255,.22)}
+.card{
+ background:linear-gradient(145deg,rgba(20,33,65,.96),rgba(9,13,30,.98));
+ border-color:rgba(117,148,220,.35);
+ box-shadow:0 14px 35px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.05);
+}
+.card:after{
+ content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+ background:linear-gradient(120deg,transparent 20%,rgba(255,255,255,.07) 48%,transparent 70%);
+ transform:translateX(-120%);transition:transform .65s ease;
+}
+.card:hover:after{transform:translateX(120%)}
+.card:hover{transform:translateY(-8px) scale(1.012);border-color:#72f5ff;box-shadow:0 20px 48px rgba(0,210,255,.16),0 0 0 1px rgba(255,106,203,.12)}
+.logo{min-height:138px;box-shadow:inset 0 0 28px rgba(255,255,255,.06)}
+.logo span{filter:drop-shadow(0 0 12px rgba(255,255,255,.28))}
+.status{box-shadow:0 0 14px rgba(88,239,255,.08)}
+.actions a{
+ border-color:rgba(105,244,255,.55);
+ background:linear-gradient(105deg,#087eaa,#5842b8 55%,#a52c86);
+ box-shadow:0 5px 18px rgba(0,190,255,.13);
+ transition:transform .16s,filter .16s,box-shadow .16s;
+}
+.actions a:hover,.actions a:focus{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,210,255,.25);filter:brightness(1.2)}
+.info{backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.2)}
+footer{color:#9baedb}
+@keyframes floatGlow{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.clock-face{animation:floatGlow 3s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+ .clock-face{animation:none}
+ .card,.actions a{transition:none}
+ .card:hover,.actions a:hover{transform:none}
+ .card:after{display:none}
+}
+</style>
+
+
+<style>
+/* FINAL NEON ARCADE POLISH */
+:root{--cyan:#67f7ff;--pink:#ff65d4;--lime:#caff73}
+body{background-color:#050711;background-image:radial-gradient(ellipse at 12% 8%,rgba(0,224,255,.22),transparent 34%),radial-gradient(ellipse at 88% 22%,rgba(255,60,194,.19),transparent 32%),radial-gradient(ellipse at 50% 100%,rgba(111,75,255,.18),transparent 38%);background-attachment:fixed}
+header{box-shadow:0 12px 55px rgba(0,220,255,.15)}
+h1{background:linear-gradient(90deg,#fff,#65f4ff,#ff70d7,#d0ff7a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(80,230,255,.3))}
+.clock-panel{border-color:rgba(103,247,255,.8);box-shadow:0 0 24px rgba(0,220,255,.2),0 0 55px rgba(255,80,210,.12),inset 0 0 25px rgba(100,240,255,.08)}
+.clock-face{box-shadow:0 0 22px rgba(103,247,255,.38)}
+.card{background:linear-gradient(145deg,rgba(24,38,76,.98),rgba(8,14,33,.99));border-color:rgba(103,247,255,.24);box-shadow:0 14px 35px rgba(0,0,0,.32),inset 0 1px rgba(255,255,255,.07)}
+.card:hover{transform:translateY(-8px) scale(1.015);border-color:var(--pink);box-shadow:0 18px 42px rgba(0,220,255,.2),0 0 24px rgba(255,80,210,.12)}
+.actions a{background:linear-gradient(100deg,#087eaa,#6040bd,#a82c87);border-color:rgba(103,247,255,.65);box-shadow:0 5px 20px rgba(0,210,255,.18)}
+.actions a:hover{filter:brightness(1.2);box-shadow:0 8px 28px rgba(0,220,255,.3)}
+@media(prefers-reduced-motion:reduce){.card,.actions a{transition:none}.card:hover{transform:none}}
+</style>
+
+
+<style>
+/* CINEMATIC REAL-WORLD NIGHT SKYLINE + REFINED CLOCK */
+html{background:#080d18}
+body{
+  position:relative;isolation:isolate;
+  background:
+    radial-gradient(ellipse at 50% 8%,rgba(82,122,165,.24),transparent 42%),
+    radial-gradient(ellipse at 12% 48%,rgba(26,76,111,.22),transparent 36%),
+    radial-gradient(ellipse at 88% 36%,rgba(102,49,100,.18),transparent 34%),
+    linear-gradient(180deg,#111c2c 0%,#101b2a 42%,#080e19 100%);
+  background-attachment:fixed;
+}
+body:before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.48;
+  background:
+    radial-gradient(1px 1px at 8% 14%,#d9e8ff 98%,transparent),
+    radial-gradient(1px 1px at 22% 32%,#d9e8ff 98%,transparent),
+    radial-gradient(1px 1px at 39% 11%,#d9e8ff 98%,transparent),
+    radial-gradient(1px 1px at 66% 23%,#d9e8ff 98%,transparent),
+    radial-gradient(1px 1px at 83% 12%,#d9e8ff 98%,transparent),
+    radial-gradient(1px 1px at 93% 39%,#d9e8ff 98%,transparent),
+    linear-gradient(180deg,transparent 0 64%,rgba(3,7,14,.25) 100%);
+}
+body:after{
+  content:"";position:fixed;left:0;right:0;bottom:0;height:clamp(110px,20vh,210px);
+  z-index:-1;pointer-events:none;opacity:.58;
+  background:
+    repeating-linear-gradient(90deg,transparent 0 18px,rgba(255,197,106,.45) 19px 21px,transparent 22px 37px) 0 72%/100% 14px no-repeat,
+    repeating-linear-gradient(90deg,#080e19 0 42px,#101b2b 43px 74px,#09111e 75px 119px,#142033 120px 151px) 0 100%/100% 78% no-repeat;
+  clip-path:polygon(0 36%,5% 36%,5% 18%,10% 18%,10% 45%,16% 45%,16% 7%,22% 7%,22% 42%,29% 42%,29% 25%,34% 25%,34% 50%,42% 50%,42% 12%,48% 12%,48% 38%,56% 38%,56% 0,62% 0,62% 45%,69% 45%,69% 20%,76% 20%,76% 43%,83% 43%,83% 10%,89% 10%,89% 39%,95% 39%,95% 25%,100% 25%,100% 100%,0 100%);
+  filter:drop-shadow(0 -8px 22px rgba(72,133,190,.13));
+}
+header{
+  background:linear-gradient(115deg,rgba(12,25,42,.91),rgba(28,25,43,.88),rgba(9,31,45,.91));
+  border-bottom-color:rgba(174,205,235,.2);
+  backdrop-filter:blur(14px);
+}
+header:before,header:after{border-color:rgba(185,211,238,.11)}
+h1{
+  background:linear-gradient(90deg,#fff 0%,#c8e6f5 40%,#e9c9e8 75%,#d7eacb 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  text-shadow:none;filter:drop-shadow(0 4px 18px rgba(137,186,220,.18));
+}
+.clock-panel{
+  gap:18px;padding:17px 25px;border:1px solid rgba(210,228,245,.26);
+  border-radius:18px;
+  background:linear-gradient(145deg,rgba(15,29,46,.88),rgba(25,31,47,.78));
+  box-shadow:0 18px 48px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+}
+.clock-face{
+  width:58px;height:58px;border-radius:16px;
+  background:linear-gradient(145deg,#263d55,#17283c);
+  border:1px solid rgba(211,231,249,.22);
+  color:#e2f0fa;box-shadow:inset 0 1px rgba(255,255,255,.12),0 8px 20px rgba(0,0,0,.24);
+}
+.clock-label{color:#a9c8df;letter-spacing:.17em}
+#local-time{
+  color:#f4f8fc;font-variant-numeric:tabular-nums;
+  font-size:clamp(32px,6vw,44px);font-weight:700;letter-spacing:.015em;
+  text-shadow:0 2px 14px rgba(0,0,0,.35);
+}
+.clock-meta{color:#b9c9d9}
+.zone-pill{
+  color:#d5e8f7;background:rgba(173,207,232,.09);
+  border:1px solid rgba(190,220,242,.24);padding:4px 10px;
+}
+.card{
+  background:linear-gradient(145deg,rgba(21,34,53,.94),rgba(10,18,31,.96));
+  border-color:rgba(174,205,235,.19);
+  box-shadow:0 16px 38px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.045);
+}
+.card:hover{border-color:rgba(167,220,241,.62);box-shadow:0 20px 44px rgba(0,0,0,.36)}
+.actions a{background:linear-gradient(105deg,#285b78,#435078,#69466c);border-color:rgba(195,220,240,.35)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+
+<style>
+/* COOL FUTURISTIC ARCADE CLOCK */
+.clock-panel{
+  position:relative; isolation:isolate; gap:20px; padding:19px 27px;
+  border:1px solid rgba(133,112,255,.8); border-radius:22px;
+  background:linear-gradient(135deg,rgba(7,13,35,.97),rgba(27,17,58,.96) 55%,rgba(7,29,52,.97));
+  box-shadow:0 0 18px rgba(91,105,255,.28),0 0 48px rgba(157,76,255,.2),inset 0 0 28px rgba(65,179,255,.1);
+  overflow:hidden;
+}
+.clock-panel:before{content:"";position:absolute;inset:-60% -20%;z-index:-1;background:linear-gradient(110deg,transparent 38%,rgba(105,211,255,.12) 50%,transparent 62%);transform:translateX(-35%);animation:clockSweep 7s ease-in-out infinite}
+.clock-face{width:60px;height:60px;border:1px solid rgba(94,222,255,.65);background:linear-gradient(145deg,#123c70,#49308a);color:#70eaff;font-size:32px;text-shadow:0 0 10px #40dfff,0 0 22px #805cff;box-shadow:0 0 18px rgba(69,195,255,.25),inset 0 0 15px rgba(129,102,255,.25)}
+.clock-label{color:#b9a8ff;letter-spacing:.24em;text-shadow:0 0 12px rgba(151,110,255,.65)}
+#local-time{color:#f5fbff;font-size:clamp(34px,6vw,48px);font-weight:900;letter-spacing:.045em;text-shadow:0 0 7px rgba(91,224,255,.9),0 0 19px rgba(93,124,255,.8),0 0 34px rgba(169,87,255,.5)}
+.clock-meta{color:#c8d7ff;font-size:12px}
+.zone-pill{color:#e1dcff;background:rgba(111,79,210,.22);border:1px solid rgba(167,139,255,.65);box-shadow:0 0 12px rgba(137,93,255,.22)}
+@keyframes clockSweep{0%,65%{transform:translateX(-45%)}100%{transform:translateX(45%)}}
+@media(prefers-reduced-motion:reduce){.clock-panel:before{animation:none}}
+@media(max-width:520px){.clock-panel{padding:14px 16px;gap:12px}.clock-face{width:48px;height:48px}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<div class="eyebrow">✦ PLAYER ONE READY · ARCADE MODE ✦</div>
+<h1>UNBLOCKED ARCADE</h1>
+<p class="tagline">⚡ PICK YOUR GAME · POWER UP · HAVE FUN ⚡</p>
+<div class="clock-panel" role="status" aria-live="off">
+<div class="clock-face" aria-hidden="true">◷</div>
+<div class="clock-copy">
+<div class="clock-label">LIVE LOCAL CLOCK</div>
+<strong id="local-time">--:--:--</strong>
+<div class="clock-meta"><span class="zone-pill" id="time-zone">Eastern Time</span><span id="local-date">Loading date…</span></div>
+</div>
+</div>
+</div></header>
+<main>
+<div class="section-head"><div><h2>🎮 THE GAME VAULT</h2><p>Choose a game to open its game page in a new tab.</p></div></div>
+<section class="grid" aria-label="Game list">
+<article class="card"><div class="logo collection"><span>GRANNY<br>ARCADE</span></div><div class="card-top"><span class="status">Game collection</span></div><h3>Granny Games</h3><p>Browse a collection of Granny-style games.</p><div class="actions"><a href="https://granny-games.com/" target="_blank" rel="noopener noreferrer">VISIT GAME SITE ↗</a></div></article>
+<article class="card"><div class="logo granny"><span>GRANNY</span></div><div class="card-top"><span class="status">Horror</span></div><h3>Granny</h3><p>Try to escape the house in the original Granny game.</p><div class="actions"><a href="https://granny1.io/granny" target="_blank" rel="noopener noreferrer">PLAY / VISIT ↗</a></div></article>
+<article class="card"><div class="logo granny3"><span>GRANNY<br>3</span></div><div class="card-top"><span class="status">Horror</span></div><h3>Granny 3</h3><p>Explore the house and find a way to escape.</p><div class="actions"><a href="https://granny1.io/granny-3" target="_blank" rel="noopener noreferrer">PLAY / VISIT ↗</a></div></article>
+<article class="card"><div class="logo roblox"><span>ROBLOX</span></div><div class="card-top"><span class="status">Create & play</span></div><h3>Roblox</h3><p>Explore millions of experiences. Sign in or create your own account on Roblox.</p><div class="actions"><a href="https://www.roblox.com/home" target="_blank" rel="noopener noreferrer">OPEN ROBLOX ↗</a><a class="secondary" href="https://www.roblox.com/signup" target="_blank" rel="noopener noreferrer">CREATE AN ACCOUNT ↗</a></div></article>
+<article class="card"><div class="logo geometry"><span>GEOMETRY<br>DASH</span></div><div class="card-top"><span class="status">Platform</span></div><h3>Geometry Dash</h3><p>Visit the Geometry Dash website and explore the game.</p><div class="actions"><a href="https://www.geometrydash.com/" target="_blank" rel="noopener noreferrer">PLAY / VISIT ↗</a></div></article>
+<article class="card"><div class="logo basketball"><span>BASKETBALL<br>LEGENDS</span></div><div class="card-top"><span class="status">Sports</span></div><h3>Basketball Legends 2020</h3><p>Hit the court in this basketball game on CrazyGames.</p><div class="actions"><a href="https://www.crazygames.com/game/basketball-legends-2020" target="_blank" rel="noopener noreferrer">PLAY / VISIT ↗</a></div></article>
+
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#082e50,#087d91,#163c6b)"><span>🚇<br>SUBWAY SURFERS</span></div><div class="card-top"><span class="status">Runner game</span></div><h3>Subway Surfers</h3><p>Dodge trains, grab coins, and keep running!</p><div class="actions"><a href="https://www.rocketgames.io/game/subway-surfers#goog_rewarded" target="_blank" rel="noopener noreferrer">PLAY SUBWAY SURFERS ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#5b3511,#b87820,#43200c)"><span>🍪<br>COOKIE CLICKER</span></div><div class="card-top"><span class="status">Clicker game</span></div><h3>Cookie Clicker</h3><p>Click cookies, buy upgrades, and build a giant cookie empire.</p><div class="actions"><a href="https://orteil.dashnet.org/cookieclicker/" target="_blank" rel="noopener noreferrer">PLAY COOKIE CLICKER ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#111,#303044,#111)"><span>♪<br>TIKTOK</span></div><div class="card-top"><span class="status">Social / videos</span></div><h3>TikTok</h3><p>Open TikTok to watch short videos. This one is a social site, not a game.</p><div class="actions"><a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">OPEN TIKTOK ↗</a></div></article>
+
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#071c48,#1649a0,#7c35c9)"><span>🔷<br>GEOMETRY DASH</span></div><div class="card-top"><span class="status">Rhythm platformer</span></div><h3>Geometry Dash Lite</h3><p>Jump over spikes and obstacles to the beat. Press Space or click to jump.</p><div class="actions"><a href="https://geometry.games/game/geometry-dash-lite/index.html" target="_blank" rel="noopener noreferrer">PLAY GEOMETRY DASH ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#123b25,#16834b,#173e67)"><span>🏎️<br>SMASH KARTS</span></div><div class="card-top"><span class="status">Kart battle</span></div><h3>Smash Karts</h3><p>Race around colorful arenas, collect power-ups, and battle other karts in a fast multiplayer game.</p><div class="actions"><a href="https://smashkarts.io/" target="_blank" rel="noopener noreferrer">PLAY SMASH KARTS ↗</a></div></article>
+
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#123b75,#087eaa,#1c355f)"><span>🟢<br>AGAR.IO</span></div><div class="card-top"><span class="status">.io arena</span></div><h3>Agar.io</h3><p>Grow your cell by collecting dots and absorbing smaller players.</p><div class="actions"><a href="https://agar.io/" target="_blank" rel="noopener noreferrer">PLAY AGAR.IO ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#14532d,#22a06b,#0b3440)"><span>🐍<br>SLITHER.IO</span></div><div class="card-top"><span class="status">Snake arena</span></div><h3>Slither.io</h3><p>Eat glowing orbs, grow your snake, and avoid crashing into others.</p><div class="actions"><a href="https://slither.io/" target="_blank" rel="noopener noreferrer">PLAY SLITHER.IO ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#7c2d12,#ea580c,#713f12)"><span>🥚<br>SHELL SHOCKERS</span></div><div class="card-top"><span class="status">Multiplayer action</span></div><h3>Shell Shockers</h3><p>Join a silly egg-themed multiplayer arena battle.</p><div class="actions"><a href="https://shellshock.io/" target="_blank" rel="noopener noreferrer">PLAY SHELL SHOCKERS ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#172554,#2563eb,#0f172a)"><span>⚡<br>KRUNKER</span></div><div class="card-top"><span class="status">Fast action</span></div><h3>Krunker.io</h3><p>Fast-paced block-style multiplayer matches. Best with a keyboard and mouse.</p><div class="actions"><a href="https://krunker.io/" target="_blank" rel="noopener noreferrer">PLAY KRUNKER ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#713f12,#eab308,#92400e)"><span>🏍️<br>MOTO X3M</span></div><div class="card-top"><span class="status">Motorbike racing</span></div><h3>Moto X3M</h3><p>Race through wild obstacle courses, flips, and tricky jumps.</p><div class="actions"><a href="https://www.coolmathgames.com/0-moto-x3m" target="_blank" rel="noopener noreferrer">PLAY MOTO X3M ↗</a></div></article>
+
+
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#0f766e,#14b8a6,#164e63)"><span>🔢<br>2048</span></div><div class="card-top"><span class="status">Number puzzle</span></div><h3>2048</h3><p>Slide matching number tiles together to reach the 2048 tile.</p><div class="actions"><a href="https://play2048.co/" target="_blank" rel="noopener noreferrer">PLAY 2048 ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#1e1b4b,#4338ca,#0f172a)"><span>🟪<br>TETR.IO</span></div><div class="card-top"><span class="status">Block puzzle</span></div><h3>TETR.IO</h3><p>A modern competitive block-stacking puzzle with solo and multiplayer modes.</p><div class="actions"><a href="https://tetr.io/" target="_blank" rel="noopener noreferrer">PLAY TETR.IO ↗</a></div></article>
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#9f1239,#ec4899,#7c3aed)"><span>🎨<br>GARTIC PHONE</span></div><div class="card-top"><span class="status">Party drawing</span></div><h3>Gartic Phone</h3><p>Draw funny prompts and guess what your friends have sketched.</p><div class="actions"><a href="https://garticphone.com/" target="_blank" rel="noopener noreferrer">PLAY GARTIC PHONE ↗</a></div></article>
+
+
+<article class="card"><div class="logo" style="background:linear-gradient(135deg,#164e63,#0891b2,#1e3a8a)"><span>🚗<br>DRIVE MAD</span></div><div class="card-top"><span class="status">Original game site</span></div><h3>Drive Mad</h3><p>Play the browser game from a non-Poki site. The game is credited to Martin Magni and Fancade.</p><div class="actions"><a href="https://drivemad.co/" target="_blank" rel="noopener noreferrer">PLAY DRIVE MAD ↗</a></div></article>
+
+
+</section>
+<aside class="info"><strong>Clock:</strong> This version displays Eastern Time (New York) and automatically switches between EST and EDT when daylight saving time changes. <strong>Roblox:</strong> I can't create an account or handle a password for you. Use the official signup link and ask a parent or guardian for help if needed. Never share your password. Game sites may still require accounts, apps, or permissions, and school/network restrictions cannot be bypassed by this page.</aside>
+</main>
+<footer>UNBLOCKED ARCADE · WINDOWS · MICROSOFT EDGE · CHROMEBOOK</footer>
+<script>
+(function(){
+ const zone='America/New_York';
+ const timeEl=document.getElementById('local-time');
+ const zoneEl=document.getElementById('time-zone');
+ const dateEl=document.getElementById('local-date');
+ function tick(){
+   const now=new Date();
+   try{
+     timeEl.textContent=new Intl.DateTimeFormat('en-US',{timeZone:zone,hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true}).format(now);
+     const shortZone=new Intl.DateTimeFormat('en-US',{timeZone:zone,timeZoneName:'short'}).formatToParts(now).find(p=>p.type==='timeZoneName');
+     zoneEl.textContent='EASTERN TIME'+(shortZone?' · '+shortZone.value:'');
+     dateEl.textContent=new Intl.DateTimeFormat('en-US',{timeZone:zone,weekday:'long',month:'short',day:'numeric',year:'numeric'}).format(now);
+   }catch(e){timeEl.textContent=now.toLocaleTimeString();zoneEl.textContent='Eastern Time';dateEl.textContent=now.toLocaleDateString();}
+ }
+ tick();window.setInterval(tick,1000);
+})();
+</script>
+</body></html>
