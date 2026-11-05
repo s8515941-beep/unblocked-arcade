@@ -259,6 +259,19 @@ h1{
     style="width:100%;padding:15px;border-radius:12px;border:1px solid #58efff;background:#111a31;color:white;font-size:16px"
   >
 </div>
+ <div id="game-categories" style="display:flex;flex-wrap:wrap;gap:10px;margin:20px 0">
+  <button class="category-btn" data-category="all">All Games</button>
+  <button class="category-btn" data-category="racing">🏎️ Racing</button>
+  <button class="category-btn" data-category="multiplayer">👥 Multiplayer</button>
+  <button class="category-btn" data-category="shooter">🎯 Shooter</button>
+  <button class="category-btn" data-category="horror">👻 Horror</button>
+  <button class="category-btn" data-category="parkour">🏃 Parkour</button>
+  <button class="category-btn" data-category="fighting">🥊 Fighting</button>
+  <button class="category-btn" data-category="sports">⚽ Sports</button>
+  <button class="category-btn" data-category="survival">🧟 Survival</button>
+  <button class="category-btn" data-category="sandbox">🌍 Sandbox</button>
+  <button class="category-btn" data-category="funny">😂 Funny</button>
+</div>
 <section class="grid" aria-label="Game list">
 <article class="card"><div class="logo collection"><span>GRANNY<br>ARCADE</span></div><div class="card-top"><span class="status">Game collection</span></div><h3>Granny Games</h3><p>Browse a collection of Granny-style games.</p><div class="actions"><a href="https://granny-games.com/" target="_blank" rel="noopener noreferrer">VISIT GAME SITE ↗</a></div></article>
 <article class="card"><div class="logo granny"><span>GRANNY</span></div><div class="card-top"><span class="status">Horror</span></div><h3>Granny</h3><p>Try to escape the house in the original Granny game.</p><div class="actions"><a href="https://granny1.io/granny" target="_blank" rel="noopener noreferrer">PLAY / VISIT ↗</a></div></article>
@@ -310,16 +323,108 @@ h1{
  }
  tick();window.setInterval(tick,1000);
 })();
- const searchBox = document.getElementById('game-search');
-const gameCards = document.querySelectorAll('.card');
+ (function(){
+  const zone = 'America/New_York';
+  const timeEl = document.getElementById('local-time');
+  const zoneEl = document.getElementById('time-zone');
+  const dateEl = document.getElementById('local-date');
 
-searchBox.addEventListener('input', function () {
+  function tick(){
+    const now = new Date();
+
+    try {
+      timeEl.textContent = new Intl.DateTimeFormat('en-US', {
+        timeZone: zone,
+        hour: 'numeric',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      }).format(now);
+
+      const shortZone = new Intl.DateTimeFormat('en-US', {
+        timeZone: zone,
+        timeZoneName: 'short'
+      }).formatToParts(now).find(p => p.type === 'timeZoneName');
+
+      zoneEl.textContent = 'EASTERN TIME' +
+        (shortZone ? ' · ' + shortZone.value : '');
+
+      dateEl.textContent = new Intl.DateTimeFormat('en-US', {
+        timeZone: zone,
+        weekday: 'long',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      }).format(now);
+
+    } catch(e) {
+      timeEl.textContent = now.toLocaleTimeString();
+      zoneEl.textContent = 'Eastern Time';
+      dateEl.textContent = now.toLocaleDateString();
+    }
+  }
+
+  tick();
+  window.setInterval(tick, 1000);
+})();
+
+const searchBox = document.getElementById('game-search');
+const gameCards = document.querySelectorAll('.card');
+const categoryButtons = document.querySelectorAll('.category-btn');
+
+const categoriesByGame = {
+  'Granny Games': ['horror'],
+  'Granny': ['horror', 'survival'],
+  'Granny 3': ['horror', 'survival'],
+  'Roblox': ['multiplayer', 'sandbox'],
+  'Geometry Dash': ['parkour'],
+  'Basketball Legends 2020': ['sports'],
+  'Subway Surfers': ['parkour'],
+  'Cookie Clicker': [],
+  'TikTok': [],
+  'Geometry Dash Lite': ['parkour'],
+  'Smash Karts': ['racing', 'multiplayer'],
+  'Agar.io': ['multiplayer', 'survival'],
+  'Slither.io': ['multiplayer', 'survival'],
+  'Shell Shockers': ['multiplayer', 'shooter'],
+  'Krunker.io': ['multiplayer', 'shooter'],
+  'Moto X3M': ['racing', 'parkour'],
+  '2048': [],
+  'TETR.IO': ['multiplayer'],
+  'Gartic Phone': ['multiplayer', 'funny'],
+  'Drive Mad': ['racing', 'parkour']
+};
+
+gameCards.forEach(function(card) {
+  const title = card.querySelector('h3')?.textContent.trim();
+  card.dataset.category = (categoriesByGame[title] || []).join(' ');
+});
+
+let activeCategory = 'all';
+
+function filterGames() {
   const searchText = searchBox.value.toLowerCase();
 
-  gameCards.forEach(function (card) {
-    const gameName = card.textContent.toLowerCase();
-    card.style.display = gameName.includes(searchText) ? '' : 'none';
+  gameCards.forEach(function(card) {
+    const matchesSearch =
+      card.textContent.toLowerCase().includes(searchText);
+
+    const matchesCategory =
+      activeCategory === 'all' ||
+      card.dataset.category.split(' ').includes(activeCategory);
+
+    card.style.display =
+      matchesSearch && matchesCategory ? '' : 'none';
+  });
+}
+
+categoryButtons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    activeCategory = button.dataset.category;
+    filterGames();
   });
 });
+
+searchBox.addEventListener('input', filterGames);
 </script>
 </body></html>
