@@ -244,7 +244,21 @@ h1{
 </div>
 </div></header>
 <main>
-<div class="section-head"><div><h2>🎮 THE GAME VAULT</h2><p>Choose a game to open its game page in a new tab.</p></div></div>
+<div class="section-head">
+  <div>
+    <h2>🎮 THE GAME VAULT</h2>
+    <p>Choose a game to open its game page in a new tab.</p>
+  </div>
+</div>
+<div style="margin:20px 0">
+  <input
+    id="game-search"
+    type="search"
+    placeholder="Search games..."
+    aria-label="Search games"
+    style="width:100%;padding:15px;border-radius:12px;border:1px solid #58efff;background:#111a31;color:white;font-size:16px"
+  >
+</div>
 <section class="grid" aria-label="Game list">
 <article class="card"><div class="logo collection"><span>GRANNY<br>ARCADE</span></div><div class="card-top"><span class="status">Game collection</span></div><h3>Granny Games</h3><p>Browse a collection of Granny-style games.</p><div class="actions"><a href="https://granny-games.com/" target="_blank" rel="noopener noreferrer">VISIT GAME SITE ↗</a></div></article>
 <article class="card"><div class="logo granny"><span>GRANNY</span></div><div class="card-top"><span class="status">Horror</span></div><h3>Granny</h3><p>Try to escape the house in the original Granny game.</p><div class="actions"><a href="https://granny1.io/granny" target="_blank" rel="noopener noreferrer">PLAY / VISIT ↗</a></div></article>
@@ -296,5 +310,16 @@ h1{
  }
  tick();window.setInterval(tick,1000);
 })();
+ const searchBox = document.getElementById('game-search');
+const gameCards = document.querySelectorAll('.card');
+
+searchBox.addEventListener('input', function () {
+  const searchText = searchBox.value.toLowerCase();
+
+  gameCards.forEach(function (card) {
+    const gameName = card.textContent.toLowerCase();
+    card.style.display = gameName.includes(searchText) ? '' : 'none';
+  });
+});
 </script>
 </body></html>
